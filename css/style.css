@@ -164,3 +164,102 @@ a {
     font-weight: 600;
     letter-spacing: 1px;
 }
+
+/* Рекламный блок SLEDVENIA */
+.sledvenia {
+    padding: 100px 0;
+    background: linear-gradient(135deg, var(--color-primary) 0%, #004d40 100%); /* Темно-зеленый градиент */
+    text-align: center;
+    border-top: 2px solid var(--color-accent);
+    border-bottom: 2px solid var(--color-accent);
+}
+
+.sledvenia__title {
+    font-size: 42px;
+    color: var(--color-accent);
+    margin-bottom: 20px;
+    letter-spacing: 3px;
+}
+
+.sledvenia__text {
+    font-size: 18px;
+    max-width: 600px;
+    margin: 0 auto 30px auto;
+}
+
+/* Блок О нас (About) */
+.about {
+    padding: 100px 0;
+    background-color: var(--color-bg);
+}
+
+.about__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Две колонки: текст и картинка */
+    gap: 50px;
+    align-items: center;
+}
+
+.about__title {
+    font-size: 36px;
+    margin-bottom: 30px;
+}
+
+.about__text {
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: #cccccc;
+}
+
+.about__list {
+    list-style: none;
+    margin-bottom: 30px;
+}
+
+.about__list li {
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 15px;
+    color: #cccccc;
+}
+
+/* Делаем красивые галочки вместо стандартных точек списка */
+.about__list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--color-accent);
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.about__brands {
+    font-size: 18px;
+    padding-top: 20px;
+    border-top: 1px solid #333;
+}
+
+.about__brands strong {
+    color: var(--color-accent);
+}
+
+.image-placeholder {
+    width: 100%;
+    height: 400px;
+    background-color: #1a1a1a;
+    border: 1px dashed #555;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #555;
+    font-size: 20px;
+}
+
+/* Адаптация под телефоны */
+@media (max-width: 768px) {
+    .about__grid {
+        grid-template-columns: 1fr; /* На мобильном колонки становятся друг под другом */
+    }
+}
