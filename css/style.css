@@ -1,45 +1,39 @@
 :root {
-    --color-bg: #0a0a0a;       /* Сделаем темный стильный фон, как для неона */
-    --color-text: #ffffff;     /* Белый текст */
-    --color-accent: #00ffcc;   /* Яркий неоновый бирюзовый для кнопок и ссылок */
+    --color-bg: #ffffff;       /* Чистый белый фон */
+    --color-text: #111111;     /* Строгий черный текст */
+    --color-accent: #000000;   /* Акцентные детали тоже черные */
+    --color-gray: #555555;     /* Серый для второстепенного текста */
     --font-main: 'Montserrat', sans-serif;
-    --container-width: 1200px;
+    --container-width: 1400px;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
     font-family: var(--font-main);
     color: var(--color-text);
     background-color: var(--color-bg);
     line-height: 1.6;
+    -webkit-font-smoothing: antialiased; /* Делает шрифты тоньше и четче на экранах */
 }
 
-a {
-    text-decoration: none;
-    color: inherit;
-}
+a { text-decoration: none; color: inherit; }
 
 .container {
     max-width: var(--container-width);
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 40px;
 }
 
-/* Шапка */
+/* --- ШАПКА --- */
 .header {
-    background-color: rgba(10, 10, 10, 0.9);
-    border-bottom: 1px solid #222;
-    padding: 20px 0;
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 30px 0;
     position: fixed;
     width: 100%;
     top: 0;
     left: 0;
-    z-index: 100;
+    z-index: 1000;
 }
 
 .header__container {
@@ -48,218 +42,115 @@ a {
     align-items: center;
 }
 
-.header__logo {
-    font-size: 24px;
-    font-weight: 700;
-    letter-spacing: 2px;
+/* ЛОГОТИП ( LightSPACE ) */
+.header__logo a {
+    font-size: 36px;
+    font-weight: 300; /* Очень тонкий шрифт как на картинке */
+    letter-spacing: 1px;
+    color: var(--color-text);
+}
+.header__logo span {
+    font-weight: 400; /* Чуть плотнее, но без перебора */
 }
 
+/* МЕНЮ */
 .nav__list {
     display: flex;
     list-style: none;
-    gap: 30px;
+    gap: 40px;
+    align-items: center;
 }
 
 .nav__link {
-    font-size: 14px;
-    font-weight: 600;
-    text-transform: uppercase;
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--color-gray);
+    position: relative;
     transition: color 0.3s;
+    padding: 5px 0;
+}
+
+/* Строгая тонкая черная линия при наведении (без неона) */
+.nav__link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--color-accent);
+    transition: width 0.3s ease;
 }
 
 .nav__link:hover {
-    color: var(--color-accent);
+    color: var(--color-text);
 }
 
-/* Главный экран */
+.nav__link:hover::after {
+    width: 100%;
+}
+
+/* КНОПКА ЗАЯВКИ (минималистичная) */
+.btn {
+    display: inline-block;
+    padding: 10px 24px;
+    font-weight: 400;
+    font-size: 14px;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 1px solid var(--color-text);
+}
+
+.btn--outline {
+    background-color: transparent;
+    color: var(--color-text);
+}
+
+.btn--outline:hover {
+    background-color: var(--color-text);
+    color: var(--color-bg);
+}
+
+/* --- КОНТЕНТ (Скелет для главной) --- */
+main {
+    margin-top: 120px; /* Отступ под белую шапку */
+}
+
+/* Пример оформления заголовков на страницах */
 .hero {
-    padding: 200px 0 120px 0;
+    padding: 150px 0;
     text-align: center;
-    background: radial-gradient(circle at center, #1a1a1a 0%, #0a0a0a 100%);
 }
 
 .hero__title {
-    font-size: 48px;
-    font-weight: 700;
+    font-size: 42px;
+    font-weight: 300;
     margin-bottom: 20px;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
+    color: var(--color-text);
 }
 
-.hero__subtitle {
-    font-size: 18px;
-    color: #aaa;
-    max-width: 600px;
-    margin: 0 auto 40px auto;
-}
-
-.btn {
-    display: inline-block;
-    padding: 15px 40px;
-    background-color: transparent;
-    color: var(--color-accent);
-    border: 2px solid var(--color-accent);
-    border-radius: 50px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: all 0.3s;
-}
-
-.btn:hover {
-    background-color: var(--color-accent);
-    color: #0a0a0a;
-    box-shadow: 0 0 20px var(--color-accent);
-}
-
-/* Блок услуг */
-.services {
-    padding: 80px 0;
-    background-color: var(--color-bg);
-}
-
+/* Сетка карточек как на скрине */
 .services__grid {
     display: grid;
-    /* Сетка: 3 колонки на ПК, если экран меньше — они сами начнут сужаться */
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px; /* Расстояние между карточками */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    margin-top: 60px;
 }
 
 .card {
-    background-color: #121212;
-    border: 1px solid #222;
-    border-radius: 8px;
-    overflow: hidden;
-    transition: transform 0.3s, border-color 0.3s;
-}
-
-.card:hover {
-    transform: translateY(-5px); /* Эффект приподнимания при наведении */
-    border-color: var(--color-accent);
+    text-align: center;
 }
 
 .card__image {
     width: 100%;
-    height: 250px;
-    background-color: #1a1a1a; /* Серый фон, пока нет реальной картинки */
-    position: relative;
-    overflow: hidden;
-}
-
-.card__image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Картинка заполнит блок без искажений */
-    display: block;
-}
-
-.card__content {
-    padding: 20px;
-    text-align: center;
+    aspect-ratio: 1 / 1;
+    background-color: #f9f9f9;
+    margin-bottom: 20px;
 }
 
 .card__title {
-    font-size: 20px;
-    font-weight: 600;
-    letter-spacing: 1px;
-}
-
-/* Рекламный блок SLEDVENIA */
-.sledvenia {
-    padding: 100px 0;
-    background: linear-gradient(135deg, var(--color-primary) 0%, #004d40 100%); /* Темно-зеленый градиент */
-    text-align: center;
-    border-top: 2px solid var(--color-accent);
-    border-bottom: 2px solid var(--color-accent);
-}
-
-.sledvenia__title {
-    font-size: 42px;
-    color: var(--color-accent);
-    margin-bottom: 20px;
-    letter-spacing: 3px;
-}
-
-.sledvenia__text {
     font-size: 18px;
-    max-width: 600px;
-    margin: 0 auto 30px auto;
-}
-
-/* Блок О нас (About) */
-.about {
-    padding: 100px 0;
-    background-color: var(--color-bg);
-}
-
-.about__grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* Две колонки: текст и картинка */
-    gap: 50px;
-    align-items: center;
-}
-
-.about__title {
-    font-size: 36px;
-    margin-bottom: 30px;
-}
-
-.about__text {
-    font-size: 16px;
-    margin-bottom: 20px;
-    color: #cccccc;
-}
-
-.about__list {
-    list-style: none;
-    margin-bottom: 30px;
-}
-
-.about__list li {
-    position: relative;
-    padding-left: 30px;
-    margin-bottom: 15px;
-    color: #cccccc;
-}
-
-/* Делаем красивые галочки вместо стандартных точек списка */
-.about__list li::before {
-    content: '✓';
-    position: absolute;
-    left: 0;
-    top: 0;
-    color: var(--color-accent);
-    font-weight: bold;
-    font-size: 18px;
-}
-
-.about__brands {
-    font-size: 18px;
-    padding-top: 20px;
-    border-top: 1px solid #333;
-}
-
-.about__brands strong {
-    color: var(--color-accent);
-}
-
-.image-placeholder {
-    width: 100%;
-    height: 400px;
-    background-color: #1a1a1a;
-    border: 1px dashed #555;
-    border-radius: 8px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #555;
-    font-size: 20px;
-}
-
-/* Адаптация под телефоны */
-@media (max-width: 768px) {
-    .about__grid {
-        grid-template-columns: 1fr; /* На мобильном колонки становятся друг под другом */
-    }
+    font-weight: 300;
+    color: var(--color-gray);
 }
