@@ -3,37 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Led NEON | LIGHTSPACE</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <title>LIGHTSPACE</title>
+    <link rel="stylesheet" href="/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="page-fade-in">
 
     <header class="header">
         <div class="header__top">
-            <div class="header__spacer"></div>
+            <div class="header__line"></div>
             <div class="header__logo">
-                <a href="../index.html">( Light<span>SPACE</span> )</a>
+                <a href="/index.html">
+                    <img src="/assets/Lightspace.avif" alt="LightSPACE" class="logo-img">
+                </a>
             </div>
-            <div class="header__spacer"></div>
+            <div class="header__right">
+                <div class="header__line"></div>
+                <div class="header__lang">
+                    <select class="lang-select">
+                        <option value="sl">SL</option>
+                        <option value="en">EN</option>
+                    </select>
+                </div>
+            </div>
         </div>
-        
         <nav class="nav">
             <ul class="nav__list">
-                <li><a href="../led-neon/index.html">Led NEON</a></li>
-                <li><a href="../design/index.html">Oblikovanje razsvetljave</a></li>
-                <li><a href="../projects/index.html">Projekti</a></li>
-                <li><a href="../about/index.html">O nas</a></li>
-                <li><a href="../request/index.html" class="nav__highlight">Izračun / Datoteke</a></li>
-                <li><a href="../sledvenia/index.html">SLEDVENIA</a></li>
+                <li><a href="/led-neon/">Led NEON</a></li>
+                <li><a href="/design/">Oblikovanje razsvetljave</a></li>
+                <li><a href="/projects/">Projekti</a></li>
+                <li><a href="/services/">Storitve</a></li>
+                <li><a href="/contact/">Kontakt</a></li>
             </ul>
         </nav>
     </header>
 
-    <main class="container">
-        <h1 class="page-title">Led NEON</h1>
-        <p>Tukaj bo vse o neonskih napisih.</p>
+    <main>
+        <section class="construction-wrapper">
+            <div class="container construction-content">
+                <pre class="ascii-work-sign">
+   .-------.
+  /   .   /|
+ /_______/ |
+ |   .   | |
+ |_______|/
+                </pre>
+                <h1 class="construction-title">V procesu dela</h1>
+                <p class="construction-subtitle">Under Construction</p>
+                <div class="construction-line"></div>
+                <p class="construction-text">Pripravljamo vsebino za to stran. Kmalu bo na voljo.</p>
+                <a href="index.html" class="construction-btn">Nazaj na domovino</a>
+            </div>
+        </section>
+
+        <section class="contact-section">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="contact-details">
+                <p>Cesta III 4, 3320 Velenje</p>
+                <p>5002850@gmail.com</p>
+                <p>+386 (0) 69643923</p>
+            </div>
+        </section>
+
+        <section class="team-photo">
+            <img src="/assets/back3.avif" alt="Naša ekipa" class="team-img">
+        </section>
     </main>
+
+    <footer class="footer">
+        <p class="footer-msg">Rezervacije trenutno niso možne. Kmalu preverite ponovno.</p>
+        <div class="footer-logo">LIGHTSPACE</div>
+        <p class="footer-email">5002850@gmail.com</p>
+        <p class="footer-company-info">Ime podjetja d.o.o. | Davčna št.: SI12345678</p>
+        <div class="footer-legal">
+            <a href="/privacy/">Politika zasebnosti</a> | <a href="/impresum/">Pravno obvestilo</a>
+        </div>
+        <p class="footer-copy">© LIGHTSPACE, 2026.</p>
+    </footer>
 
 </body>
 </html>

@@ -7,13 +7,14 @@
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="page-fade-in">
 
-    <div class="header__top">
+    <header class="header">
+        <div class="header__top">
             <div class="header__line"></div>
             
             <div class="header__logo">
-                <a href="/">
+                <a href="/index.html">
                     <img src="/assets/Lightspace.avif" alt="LightSPACE" class="logo-img">
                 </a>
             </div>
@@ -42,41 +43,145 @@
 
     <main>
         <div class="container title-container">
-            <h1 class="page-title">Led NEON</h1>
+            <h1 class="page-title">Led NEON</h1>    
         </div>
 
         <section class="grey-showcase">
             <div class="container showcase-grid">
                 
                 <div class="showcase-card">
-                    <img src="https://via.placeholder.com/400x400/eeeeee/999999?text=FOTO+1" alt="Led neonski napisi" class="card-img">
+                    <img src="assets/ledneonskinapisi.avif" alt="Led neonski napisi" class="card-img">
                     <div class="card-title">Led neonski napisi</div>
                 </div>
 
                 <div class="showcase-card">
-                    <img src="https://via.placeholder.com/400x400/eeeeee/999999?text=FOTO+2" alt="Svetlobne table" class="card-img">
+                    <img src="assets/svetlobnetable.avif" alt="Svetlobne table" class="card-img">
                     <div class="card-title">Svetlobne table</div>
                 </div>
 
                 <div class="showcase-card">
-                    <img src="https://via.placeholder.com/400x400/eeeeee/999999?text=FOTO+3" alt="Zelene stene" class="card-img">
+                    <img src="assets/zelenestene.avif" alt="Zelene stene" class="card-img">
                     <div class="card-title">Zelene stene</div>
                 </div>
 
             </div>
         </section>
 
-        <section class="fullwidth-gallery">
-            <img src="https://via.placeholder.com/600x400/333333/ffffff?text=Barber+Neon" alt="Gallery 1">
+        <section class="prism-gallery-wrapper">
+            <div class="container title-container">
+                <h2 class="prism-title">Galerija projektov</h2>
+            </div>
             
-            <img src="https://via.placeholder.com/600x400/444444/ffffff?text=Lips+Neon" alt="Gallery 2">
-            
-            <img src="https://via.placeholder.com/600x400/555555/ffffff?text=Store+Lighting" alt="Gallery 3">
-            
-            <img src="https://via.placeholder.com/600x400/666666/ffffff?text=Park+Lighting" alt="Gallery 4">
+            <div class="prism-gallery" id="prismGallery">
+                <div class="prism-item" onclick="openLightbox(0)">
+                    <img src="assets/6bca4757-943c-4358-add5-33faf4f8406b_edited.jpg" alt="Projekt 1">
+                </div>
+                <div class="prism-item" onclick="openLightbox(1)">
+                    <img src="assets/2019-09-12_18-53-43_KNA_4200.NEF.jpg" alt="Projekt 2">
+                </div>
+                <div class="prism-item" onclick="openLightbox(2)">
+                    <img src="assets/08300ad2-7f81-4c50-bb80-5eca3d57d6a9_edited.jpg" alt="Projekt 3">
+                </div>
+                <div class="prism-item" onclick="openLightbox(3)">
+                    <img src="assets/fon chertej 02_edited.jpg" alt="Projekt 4">
+                </div>
+                <div class="prism-item" onclick="openLightbox(4)">
+                    <img src="assets/fon chertej.jpg" alt="Projekt 5">
+                </div>
+                <div class="prism-item" onclick="openLightbox(5)">
+                    <img src="assets/office DM.jpg" alt="Projekt 6">
+                </div>
+                <div class="prism-item" onclick="openLightbox(6)">
+                    <img src="assets/park.jpg" alt="Projekt 7">
+                </div>
+                <div class="prism-item" onclick="openLightbox(7)">
+                    <img src="assets/soba.jpg" alt="Projekt 8">
+                </div>
+                <div class="prism-item" onclick="openLightbox(8)">
+                    <img src="assets/Дворец бракосочетаний10.jpg" alt="Projekt 9">
+                </div>
+                <div class="prism-item" onclick="openLightbox(9)">
+                    <img src="assets/Офис продаж.jpg" alt="Projekt 10">
+                </div>
+                <div class="prism-item" onclick="openLightbox(10)">
+                    <img src="assets/Приходской дом.jpg" alt="Projekt 11">
+                </div>
+            </div>
+        </section>
+
+        <section class="info-block" style="background-image: url('assets/back1.avif');">
+            <div class="info-box">
+                <p>Naša specialnost so svetlobni projekti.</p>
+                <p>Naši inženirji so visoko usposobljeni strokovnjaki z mnogoletnimi izkušnjami. V zadnjih 10 letih je naša ekipa uspešno izvedla več kot 30.000 projektov.</p>
+                <p>Prednosti sodelovanja z nami: Dodelitev več strokovnjakov za vzporedno delo na velikih projektih. Neprekinjen tok projektov pri delu z omrežnimi objekti. Impresivna portfelja projektov za velika podjetja, kot so Philips Russia, Nike, Metro C&C, Lexus in drugi.</p>
+                <p>Prednosti sodelovanja z LIGHTSPACE: Izvedba projektov v skladu z zahtevami v dogovorjenem časovnem okviru. Fleksibilen delovni urnik. Rezultati so zagotovljeni v priročnih formatih. Zagotovljena zaupnost z dogovorom o nerazkrivanju.</p>
+            </div>
+        </section>
+
+        <section class="contact-section">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="contact-details">
+                <p>Cesta III 4, 3320 Velenje</p>
+                <p>5002850@gmail.com</p>
+                <p>+386 (0) 69643923</p>
+            </div>
+        </section>
+
+        <section class="team-photo">
+            <img src="assets/back2.avif" alt="Naša ekipa" class="team-img">
         </section>
 
     </main>
+
+    <footer class="footer">
+        <p class="footer-msg">Rezervacije trenutno niso možne. Kmalu preverite ponovno.</p>
+        <div class="footer-logo">LIGHTSPACE</div>
+        <p class="footer-email">5002850@gmail.com</p>
+        
+        <p class="footer-company-info">Ime podjetja d.o.o. | Davčna št.: SI12345678</p>
+        
+        <div class="footer-legal">
+            <a href="/privacy/">Politika zasebnosti</a> | <a href="/impresum/">Pravno obvestilo</a>
+        </div>
+        
+        <p class="footer-copy">© LIGHTSPACE, 2026.</p>
+    </footer>
+
+    <div id="lightbox" class="lightbox">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <span class="lb-nav lb-prev" onclick="changeImage(-1)">&#10094;</span>
+        <img id="lightbox-img" src="" alt="Full screen image">
+        <span class="lb-nav lb-next" onclick="changeImage(1)">&#10095;</span>
+    </div>
+
+    <script>
+        let currentIndex = 0;
+        const galleryImages = document.querySelectorAll('.prism-item img');
+
+        function openLightbox(index) {
+            currentIndex = index;
+            document.getElementById('lightbox-img').src = galleryImages[currentIndex].src;
+            document.getElementById('lightbox').style.display = 'flex';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+
+        function changeImage(direction) {
+            currentIndex += direction;
+            if (currentIndex < 0) currentIndex = galleryImages.length - 1;
+            if (currentIndex >= galleryImages.length) currentIndex = 0;
+            
+            document.getElementById('lightbox-img').src = galleryImages[currentIndex].src;
+        }
+
+        document.getElementById('lightbox').addEventListener('click', function(e) {
+            if(e.target === this) {
+                closeLightbox();
+            }
+        });
+    </script>
 
 </body>
 </html>

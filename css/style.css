@@ -9,7 +9,6 @@ body {
     color: #111111;
     font-family: 'Montserrat', sans-serif;
     -webkit-font-smoothing: antialiased;
-    /* ЖЕЛЕЗОБЕТОННЫЙ ОТСТУП СВЕРХУ */
     padding-top: 80px; 
 }
 
@@ -132,8 +131,8 @@ a {
     aspect-ratio: 1;
     object-fit: cover;
     display: block;
-    background-color: #cfcfcf; /* Серый цвет, пока нет фото */
-    min-height: 250px; /* Спасает от схлопывания */
+    background-color: #cfcfcf; 
+    min-height: 250px;
 }
 
 .card-title {
@@ -145,28 +144,474 @@ a {
     text-align: left;
 }
 
-/* --- ГАЛЕРЕЯ НА ВСЮ ШИРИНУ --- */
-.fullwidth-gallery {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    width: 100%;
+/* --- СЕКЦИЯ СВЕТЛОЙ ПРИЗМЫ (МОНОХРОМ В ЦВЕТ) --- */
+.prism-gallery-wrapper {
+    background-color: #ffffff;
+    padding: 40px 0;
+    margin: 20px 0 60px 0;
 }
 
-.gallery-img {
+.prism-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 400;
+    color: #222222;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.prism-gallery {
+    display: flex;
+    height: 450px; 
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    overflow: hidden;
+    background-color: #ffffff;
+}
+
+.prism-item {
+    flex: 1;
+    position: relative;
+    transition: flex 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    cursor: pointer;
+    overflow: hidden;
+    border-right: 2px solid #ffffff; /* Белые чистые стыки */
+}
+
+.prism-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    display: block;
-    aspect-ratio: 4/3;
-    background-color: #eeeeee; /* Светло-серый фон для заглушек галереи */
-    min-height: 200px;
+    object-position: center;
+    /* В покое: полностью черно-белое + матовое размытие */
+    filter: grayscale(100%) brightness(1.1) blur(5px);
+    transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    transform: scale(1.05);
 }
 
-/* Адаптация для мобилок */
+/* Белая матовая пелена (калька) */
+.prism-item::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(255, 255, 255, 0.5); 
+    transition: opacity 0.6s ease;
+    z-index: 1;
+}
+
+/* Когда мышка в зоне галереи, остальные лучи сжимаются */
+.prism-gallery:hover .prism-item {
+    flex: 0.4; 
+}
+
+/* Раскрываем выбранную полосу */
+.prism-item:hover {
+    flex: 5 !important; 
+}
+
+.prism-item:hover img {
+    /* При наведении: убираем ЧБ (0%), убираем размытие (0px) -> возвращается 100% цвет */
+    filter: grayscale(0%) brightness(0.95) blur(0px);
+    transform: scale(1);
+}
+
+.prism-item:hover::after {
+    opacity: 0; /* Матовая пелена уходит */
+}
+
+/* --- ЛАЙТБОКС С КНОПКАМИ --- */
+.lightbox {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(255, 255, 255, 0.95); /* Светлый лайтбокс для минимализма */
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.lightbox img {
+    max-width: 80%;
+    max-height: 85%;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1); /* Легкая тень */
+    animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.98); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 30px;
+    right: 50px;
+    color: #111; /* Темный крестик */
+    font-size: 50px;
+    font-weight: 200;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.lightbox-close:hover { color: #888; }
+
+.lb-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #cccccc;
+    font-size: 60px;
+    font-weight: 200;
+    cursor: pointer;
+    padding: 20px;
+    transition: color 0.3s;
+    user-select: none;
+}
+
+.lb-nav:hover { color: #111; }
+.lb-prev { left: 30px; }
+.lb-next { right: 30px; }
+
+/* --- БЛОК С ТЕКСТОМ НА ФОНЕ ПЕЙЗАЖА --- */
+.info-block {
+    background-color: #e0e5e8;
+    background-size: cover;
+    background-position: center;
+    padding: 100px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.info-box {
+    background-color: #ffffff;
+    max-width: 800px;
+    padding: 60px;
+    text-align: justify;
+}
+
+.info-box p {
+    font-size: 13px;
+    line-height: 1.8;
+    color: #333333;
+    margin-bottom: 15px;
+}
+.info-box p:last-child {
+    margin-bottom: 0;
+}
+
+/* --- КОНТАКТЫ --- */
+.contact-section {
+    padding: 80px 0;
+    text-align: center;
+}
+
+.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 400;
+    color: #222222;
+    margin-bottom: 30px;
+}
+
+.contact-details p {
+    font-size: 13px;
+    color: #555555;
+    margin-bottom: 15px;
+}
+
+/* --- ФОТО КОМАНДЫ --- */
+.team-photo {
+    width: 100%;
+    display: block;
+}
+
+.team-img {
+    width: 100%;
+    height: auto;
+    max-height: 600px;
+    object-fit: cover;
+    display: block;
+}
+
+/* --- ПОДВАЛ (ФУТЕР) --- */
+.footer {
+    padding: 60px 0;
+    text-align: center;
+    background-color: #ffffff;
+}
+
+.footer-msg {
+    font-size: 14px;
+    color: #333333;
+    margin-bottom: 30px;
+}
+
+.footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+.footer-email {
+    font-size: 12px;
+    color: #555555;
+    margin-bottom: 30px;
+}
+
+.footer-company-info {
+    font-size: 11px;
+    color: #666666;
+    margin-bottom: 10px;
+}
+
+.footer-legal {
+    font-size: 11px;
+    margin-bottom: 20px;
+}
+
+.footer-legal a {
+    color: #555555;
+    transition: color 0.3s;
+    margin: 0 5px;
+}
+
+.footer-legal a:hover {
+    color: #000000;
+}
+
+.footer-copy {
+    font-size: 10px;
+    color: #999999;
+}
+
+/* --- АДАПТАЦИЯ ДЛЯ МОБИЛЬНЫХ УСТРОЙСТВ --- */
 @media (max-width: 900px) {
     .showcase-grid { grid-template-columns: 1fr; }
-    .fullwidth-gallery { grid-template-columns: repeat(2, 1fr); }
+    .prism-gallery { height: 350px; }
+    .info-box { padding: 40px; }
 }
+
 @media (max-width: 500px) {
-    .fullwidth-gallery { grid-template-columns: 1fr; }
+    .prism-gallery { height: 400px; flex-direction: column; }
+    .prism-item { border-right: none; border-bottom: 1px solid #ffffff; }
+    .lb-nav { font-size: 40px; padding: 10px; }
+    .lb-prev { left: 10px; }
+    .lb-next { right: 10px; }
+    .info-box { padding: 20px; }
+}
+
+/* Текстовый символ работы из черточек */
+.ascii-work-sign {
+    font-family: monospace;
+    font-size: 16px;
+    line-height: 1.2;
+    color: #888888;
+    margin-bottom: 20px;
+    white-space: pre;
+    text-align: center;
+}
+
+/* --- КРАСИВЫЙ ПЛАВНЫЙ ПЕРЕХОД СТРАНИЦ --- */
+.page-fade-in {
+    animation: pageAnimation 0.6s ease-out forwards;
+    opacity: 0;
+}
+
+@keyframes pageAnimation {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- ЧИСТЫЕ СТИЛИ СТРАНИЦЫ КОНТАКТОВ --- */
+.studio-contact-section {
+    padding: 40px 0 60px 0;
+    text-align: center;
+}
+
+.contact-page-layout {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact-intro-text {
+    font-size: 14px;
+    line-height: 1.8;
+    color: #444444;
+    margin-bottom: 40px;
+}
+
+.contact-info-block h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+}
+
+.contact-line-item {
+    font-size: 14px;
+    color: #333333;
+    margin-bottom: 12px;
+}
+
+.contact-line-item span {
+    font-weight: 500;
+    color: #777777;
+    margin-right: 5px;
+}
+
+/* Секция серой формы во всю ширину экрана */
+.contact-form-section {
+    background-color: #dce0e4;
+    padding: 80px 0;
+    width: 100%;
+    text-align: center;
+}
+
+.contact-form-container {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.form-main-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 400;
+    color: #111111;
+    margin-bottom: 40px;
+}
+
+.clean-studio-form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    align-items: center;
+}
+
+/* Сетка для полей Имя и Почта */
+.studio-form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    width: 100%;
+}
+
+.clean-studio-form input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #111111;
+    padding: 10px 0;
+    font-family: inherit;
+    font-size: 14px;
+    outline: none;
+    color: #111111;
+}
+
+.clean-studio-form textarea {
+    width: 100%;
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    padding: 15px;
+    font-family: inherit;
+    font-size: 14px;
+    outline: none;
+    color: #111111;
+    resize: none;
+}
+
+.studio-submit-btn {
+    background-color: #1c1f22;
+    color: #ffffff;
+    border: none;
+    padding: 14px 60px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 15px;
+}
+
+.studio-submit-btn:hover {
+    background-color: #000000;
+}
+
+/* Текстовый символ работы для заглушек */
+.ascii-work-sign {
+    font-family: monospace;
+    font-size: 15px;
+    line-height: 1.3;
+    color: #888888;
+    margin-bottom: 25px;
+    white-space: pre;
+    text-align: center;
+}
+
+/* Стили заглушки */
+.construction-wrapper {
+    padding: 120px 0;
+    text-align: center;
+}
+
+.construction-content {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.construction-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+
+.construction-subtitle {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #888;
+    margin-bottom: 25px;
+}
+
+.construction-line {
+    width: 40px;
+    height: 1px;
+    background-color: #111;
+    margin-bottom: 25px;
+}
+
+.construction-text {
+    font-size: 13px;
+    color: #555;
+    margin-bottom: 35px;
+}
+
+.construction-btn {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #111;
+    border: 1px solid #111;
+    padding: 12px 30px;
+}
+
+/* Адаптивность для мобилок */
+@media (max-width: 600px) {
+    .studio-form-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .form-main-title {
+        font-size: 26px;
+    }
+    .studio-submit-btn {
+        width: 100%;
+    }
 }
