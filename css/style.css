@@ -9,6 +9,8 @@ body {
     color: #111111;
     font-family: 'Montserrat', sans-serif;
     -webkit-font-smoothing: antialiased;
+    /* ЖЕЛЕЗОБЕТОННЫЙ ОТСТУП СВЕРХУ */
+    padding-top: 80px; 
 }
 
 a {
@@ -24,86 +26,147 @@ a {
 
 /* --- ШАПКА --- */
 .header {
-    padding: 40px 0 30px 0;
-    margin-bottom: 50px;
+    padding-bottom: 20px;
 }
 
 .header__top {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     max-width: 1400px;
     margin: 0 auto 30px auto;
     padding: 0 40px;
+    gap: 40px;
 }
 
-.header__spacer {
+.header__line {
     flex: 1;
+    height: 1px;
+    background-color: #e0e0e0;
 }
 
 .header__logo {
-    flex: 2;
-    text-align: center;
+    flex-shrink: 0;
 }
 
-.header__logo a {
-    font-size: 55px;
-    font-weight: 200;
-    letter-spacing: 2px;
-    color: #000;
+.logo-img {
+    height: 120px;
+    width: auto;
+    display: block;
+    margin: 0 auto;
 }
 
-.header__logo span {
-    font-weight: 400;
+.header__right {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.lang-select {
+    border: 1px solid #dddddd;
+    padding: 6px 20px 6px 10px;
+    font-family: inherit;
+    font-size: 12px;
+    color: #333;
+    background-color: transparent;
+    cursor: pointer;
+    outline: none;
 }
 
 /* --- МЕНЮ --- */
 .nav__list {
     display: flex;
     justify-content: center;
-    gap: 40px;
+    gap: 30px;
     list-style: none;
 }
 
 .nav__list a {
-    font-size: 14px;
-    font-weight: 300;
-    color: #666666;
-    position: relative;
-    padding-bottom: 5px;
+    font-size: 11px;
+    font-weight: 400;
+    color: #555555;
     transition: color 0.3s;
-}
-
-/* Эффект при наводе: тонкая черная линия */
-.nav__list a::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 1px;
-    background-color: #000000;
-    transition: width 0.3s ease;
 }
 
 .nav__list a:hover {
     color: #000000;
 }
 
-.nav__list a:hover::after {
+/* --- ЗАГОЛОВОК --- */
+.title-container {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.page-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    font-weight: 400;
+    color: #222222;
+    letter-spacing: 1px;
+}
+
+/* --- СЕРАЯ СЕКЦИЯ С КАРТОЧКАМИ --- */
+.grey-showcase {
+    background-color: #dce0e4;
+    padding: 60px 0;
     width: 100%;
 }
 
-/* Выделение для вкладки с формой/заявкой */
-.nav__highlight {
-    color: #000000 !important;
-    border-bottom: 1px solid #cccccc;
+.showcase-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
 }
 
-/* Заголовки страниц */
-.page-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 38px;
+.showcase-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    display: block;
+    background-color: #cfcfcf; /* Серый цвет, пока нет фото */
+    min-height: 250px; /* Спасает от схлопывания */
+}
+
+.card-title {
+    background-color: #ffffff;
+    padding: 20px 15px;
+    font-size: 13px;
     font-weight: 400;
-    color: #222222;
+    color: #333333;
+    text-align: left;
+}
+
+/* --- ГАЛЕРЕЯ НА ВСЮ ШИРИНУ --- */
+.fullwidth-gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    width: 100%;
+}
+
+.gallery-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    aspect-ratio: 4/3;
+    background-color: #eeeeee; /* Светло-серый фон для заглушек галереи */
+    min-height: 200px;
+}
+
+/* Адаптация для мобилок */
+@media (max-width: 900px) {
+    .showcase-grid { grid-template-columns: 1fr; }
+    .fullwidth-gallery { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 500px) {
+    .fullwidth-gallery { grid-template-columns: 1fr; }
 }
