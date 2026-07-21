@@ -602,35 +602,41 @@ a {
     padding: 12px 30px;
 }
 
-/* ==========================================
-   АДАПТИВНОСТЬ ДЛЯ МОБИЛЬНЫХ УСТРОЙСТВ (MOBILE)
-   ========================================== */
+/* ===================================================
+   ПОЛНЫЙ МОБИЛЬНЫЙ CSS (ДЛЯ ЭКРАНОВ 768px И МЕНЬШЕ)
+   =================================================== */
 
 @media (max-width: 768px) {
 
-    /* --- БАЗОВЫЕ НАСТРОЙКИ --- */
+    /* --- БАЗОВАЯ АДАПТАЦИЯ И КОНТЕЙНЕРЫ --- */
     body {
-        padding-top: 20px; /* Уменьшаем отступ сверху */
+        padding-top: 15px;
     }
 
     .container {
-        padding: 0 20px; /* Меньше боковые поля, чтобы контент не зажимался */
+        padding: 0 15px;
+        max-width: 100%;
     }
 
     /* --- ШАПКА И ЛОГОТИП --- */
+    .header {
+        padding-bottom: 10px;
+    }
+
     .header__top {
-        flex-direction: column; /* Элементы встают друг под друга */
-        gap: 15px;
-        padding: 0 20px;
-        margin-bottom: 20px;
+        flex-direction: column;
+        gap: 10px;
+        padding: 0 15px;
+        margin-bottom: 15px;
     }
 
     .header__line {
-        display: none; /* Убираем длинные декоративные линии на мобилках */
+        display: none; /* Убираем длинные декоративные полосы */
     }
 
     .logo-img {
-        height: 80px; /* Уменьшаем логотип, чтобы он не занимал пол-экрана */
+        height: 75px;
+        width: auto;
     }
 
     .header__right {
@@ -638,78 +644,193 @@ a {
         justify-content: center;
     }
 
-    /* --- МЕНЮ НАВИГАЦИИ --- */
+    /* --- СТРОГОЕ МЕНЮ В ОДНУ СТРОКУ --- */
+    .nav {
+        width: 100%;
+        overflow-x: hidden; /* Запрещаем горизонтальный скролл страницы */
+    }
+
     .nav__list {
-        flex-wrap: wrap; /* Если названия не влезают, они мягко переносятся */
-        gap: 15px 20px;
-        padding: 0 15px;
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        width: 100% !important;
+        gap: 2px !important;
+        padding: 0 5px !important;
+        flex-wrap: nowrap !important; /* Жесткий запрет переносa на 2-ю строку */
+        list-style: none;
+    }
+
+    .nav__list li {
+        flex: 1 1 auto;
+        text-align: center;
     }
 
     .nav__list a {
-        font-size: 12px;
+        font-size: 9px !important; /* Размер под все разрешения экранов */
+        letter-spacing: -0.3px;
+        white-space: nowrap !important;
+        display: block;
+        padding: 4px 0;
     }
 
     /* --- ЗАГОЛОВКИ И ТЕКСТЫ --- */
+    .title-container {
+        margin-top: 15px;
+        margin-bottom: 20px;
+    }
+
     .page-title {
-        font-size: 26px;
+        font-size: 24px;
     }
 
     .form-main-title,
-    .section-title {
-        font-size: 22px;
+    .section-title,
+    .price-title-ru,
+    .prism-title {
+        font-size: 20px;
     }
 
-    /* --- СЕРАЯ СЕКЦИЯ С КАРТОЧКАМИ (по 1 в ряд) --- */
+    /* --- СЕРАЯ СЕКЦИЯ С КАРТОЧКАМИ (1 В РЯД) --- */
+    .grey-showcase {
+        padding: 30px 0;
+    }
+
     .showcase-grid {
         grid-template-columns: 1fr;
         gap: 20px;
-        padding: 0 20px;
+        padding: 0 15px;
     }
 
     .card-img {
         min-height: auto;
     }
 
-    /* --- МАТОВАЯ ГАЛЕРЕЯ НА ГЛАВНОЙ --- */
+    /* --- МАТОВАЯ ГАЛЕРЕЯ (ВЕРТИКАЛЬНАЯ) --- */
+    .prism-gallery-wrapper {
+        padding: 20px 0;
+        margin: 10px 0 30px 0;
+    }
+
     .prism-gallery {
         height: auto;
-        flex-direction: column; /* На смартфонах полосы превращаются в вертикальный список */
+        flex-direction: column;
     }
 
     .prism-item {
-        height: 180px; /* Фиксированная высота для каждой полосы */
+        height: 160px;
         border-right: none;
         border-bottom: 2px solid #ffffff;
     }
 
     .prism-gallery:hover .prism-item {
-        flex: 1; /* Отключаем сильное сжатие соседей на тачскринах */
+        flex: 1;
     }
 
     .prism-item:hover {
         flex: 1 !important;
     }
 
-    /* --- ФОРМА В КОНТАКТАХ --- */
-    .studio-form-grid {
-        grid-template-columns: 1fr; /* Поля "Имя" и "Email" встают друг под друга */
+    /* --- СТРАНИЦА УСЛУГ (STORITVE) --- */
+    .services-fluid-grid {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .s-new-card {
+        width: 100%;
+        min-width: 100%;
+    }
+
+    .s-new-card img {
+        aspect-ratio: 1.2;
+    }
+
+    /* --- СТРАНИЦА ПРОЕКТОВ (ПРОКРУТКА) --- */
+    .projects-header-grid {
+        grid-template-columns: 1fr;
         gap: 15px;
     }
 
+    .projects-scroller-container {
+        padding: 0 15px;
+        gap: 15px;
+    }
+
+    .project-scroll-card {
+        flex: 0 0 260px;
+    }
+
+    /* --- ФОРМА В КОНТАКТАХ И РАСЧЕТЕ ЦЕНЫ --- */
+    .contact-form-section,
+    .price-request-grey {
+        padding: 40px 0;
+    }
+
+    .studio-form-grid,
+    .form-inputs-inline {
+        grid-template-columns: 1fr;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .clean-studio-form,
     .contact-form-container {
-        padding: 0 20px;
+        padding: 0 15px;
+        width: 100%;
     }
 
-    .studio-submit-btn {
-        width: 100%; /* Кнопка во всю ширину для удобного нажатия пальцем */
+    .studio-submit-btn,
+    .submit-btn-dark {
+        width: 100%; /* Кнопка во всю ширину для удобства нажатия */
+        padding: 14px 20px;
     }
 
-    /* --- ТЕКСТОВЫЕ БЛОКИ И ПОДВАЛ --- */
+    /* --- ИНФО-БЛОКИ И ПОДВАЛ --- */
     .info-box {
-        padding: 25px 20px;
+        padding: 25px 15px;
     }
 
     .footer {
-        padding: 40px 20px;
+        padding: 30px 15px;
+    }
+
+    /* --- МОДАЛЬНОЕ ОКНО ДЛЯ КАРТИНОК (ПО КЛИКУ/ДВОЙНОМУ ТАПУ) --- */
+    .lightbox-modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.95);
+        z-index: 99999;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+    }
+
+    .lightbox-modal img {
+        max-width: 100%;
+        max-height: 85vh;
+        object-fit: contain;
+    }
+
+    .lightbox-close {
+        position: absolute;
+        top: 15px;
+        right: 20px;
+        color: #ffffff;
+        font-size: 32px;
+        font-weight: 300;
+        cursor: pointer;
+        z-index: 100000;
+    }
+}
+
+/* Дополнительный фикс для совсем маленьких экранов (менее 360px) */
+@media (max-width: 360px) {
+    .nav__list a {
+        font-size: 8px !important;
     }
 }
