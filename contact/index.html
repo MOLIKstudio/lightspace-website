@@ -60,13 +60,15 @@
             <div class="container contact-form-container">
                 <h2 class="form-main-title">Napišite nam sporočilo</h2>
                 
-                <form action="https://formspree.io/f/xpqvlrza" method="POST" class="clean-studio-form">
+                <form id="contact-form" action="https://formspree.io/f/xpqvlrza" method="POST" class="clean-studio-form">
                     <div class="studio-form-grid">
                         <input type="text" name="name" placeholder="Ime" required>
                         <input type="email" name="email" placeholder="E-pošta *" required>
                     </div>
                     <textarea name="message" placeholder="Vaše sporočilo" rows="5" required></textarea>
-                    <button type="submit" class="studio-submit-btn">Pošlji</button>
+                    <button type="submit" id="submit-btn" class="studio-submit-btn">Pošlji</button>
+                    
+                    <div id="form-status" style="display: none; margin-top: 20px; font-size: 13px; color: #111;"></div>
                 </form>
             </div>
         </section>
@@ -86,6 +88,47 @@
         </div>
         <p class="footer-copy">© LIGHTSPACE, 2026.</p>
     </footer>
+
+    <script>
+        const form = document.getElementById('contact-form');
+        const status = document.getElementById('form-status');
+        const submitBtn = document.getElementById('submit-btn');
+
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault(); // Запрещаем стандартный переход по ссылке
+
+            submitBtn.textContent = 'Pošiljanje...'; // Менявм текст кнопки
+            submitBtn.disabled = true;
+
+            const data = new FormData(form);
+
+            try {
+                const response = await fetch(form.action, {
+                    method: form.method,
+                    body: data,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    status.style.display = 'block';
+                    status.style.color = '#2e7d32'; // Зеленый цвет успеха
+                    status.innerHTML = 'Hvala! Vaše sporočilo je bilo uspešno poslano.';
+                    form.reset(); // Очищаем форму
+                } else {
+                    throw new Error('Napaka pri pošiljanju.');
+                }
+            } catch (error) {
+                status.style.display = 'block';
+                status.style.color = '#c62828'; // Красный цвет при ошибке
+                status.innerHTML = 'Prišlo je do napake. Prosimo, poskusite znova.';
+            } finally {
+                submitBtn.textContent = 'Pošlji';
+                submitBtn.disabled = false;
+            }
+        });
+    </script>
 
 </body>
 </html>
