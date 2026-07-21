@@ -60,12 +60,12 @@
             <div class="container contact-form-container">
                 <h2 class="form-main-title">Napišite nam sporočilo</h2>
                 
-                <form class="clean-studio-form">
+                <form action="https://formspree.io/f/xpqvlrza" method="POST" class="clean-studio-form">
                     <div class="studio-form-grid">
-                        <input type="text" placeholder="Ime" required>
-                        <input type="email" placeholder="E-pošta *" required>
+                        <input type="text" name="name" placeholder="Ime" required>
+                        <input type="email" name="email" placeholder="E-pošta *" required>
                     </div>
-                    <textarea placeholder="Vaše sporočilo" rows="5" required></textarea>
+                    <textarea name="message" placeholder="Vaše sporočilo" rows="5" required></textarea>
                     <button type="submit" class="studio-submit-btn">Pošlji</button>
                 </form>
             </div>
@@ -80,9 +80,9 @@
         <p class="footer-msg">Rezervacije trenutno niso možne. Kmalu preverite ponovno.</p>
         <div class="footer-logo">LIGHTSPACE</div>
         <p class="footer-email">5002850@gmail.com</p>
-        <p class="footer-company-info">LIGHTSPACE, svetlobne inštalacije d.o.o.| Davčna št.: 87997983</p>
+        <p class="footer-company-info">LIGHTSPACE, svetlobne inštalacije d.o.o. | Davčna št.: 87997983</p>
         <div class="footer-legal">
-            <a href="/privacy/">Politika zasebnosti</a> | <a href="/impresum/">Pravno obvestilo</a>
+            <a href="/privacy.html">Politika zasebnosti</a> | <a href="/impresum.html">Pravno obvestilo</a>
         </div>
         <p class="footer-copy">© LIGHTSPACE, 2026.</p>
     </footer>
